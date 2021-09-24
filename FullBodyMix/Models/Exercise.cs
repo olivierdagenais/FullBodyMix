@@ -1,4 +1,6 @@
-﻿namespace FullBodyMix.Models
+﻿using System.Text.Json.Serialization;
+
+namespace FullBodyMix.Models
 {
 	public record Exercise
 	{
@@ -10,6 +12,7 @@
 		/// <summary>
 		/// What is the primary area of focus for the exercise?
 		/// </summary>
+		[JsonConverter(typeof(JsonStringEnumMemberConverter))]
 		public FocusArea FocusArea { get; init; } 
 
 		/// <summary>
