@@ -1,0 +1,27 @@
+﻿@IconMarkupString
+
+@code {
+    /// <summary>
+    /// One of the values at https://useiconic.com/open#icons
+    /// </summary>
+    [Parameter]
+    public string IconId { get; set; }
+
+    // https://stackoverflow.com/a/66255451/98903
+    private MarkupString IconMarkupString
+    {
+        get => new MarkupString(
+            // https://stackoverflow.com/a/4756461/98903
+            $"<svg role='img' aria-label='{DisplayName} icon' viewBox='0 0 8 8' class='icon'>" +
+            // https://github.com/iconic/open-iconic
+            $"<use xlink:href='css/open-iconic/sprite/sprite.svg#{IconId}' class='icon-{IconId}'></use>" +
+            $"</svg>"
+        );
+    }
+
+    /// <summary>
+    /// A string that can be used to describe the icon.
+    /// </summary>
+    /// <seealso href="https://stackoverflow.com/a/4756461/98903"/>
+    public string DisplayName { get => IconId.Replace("-", " "); }
+}
