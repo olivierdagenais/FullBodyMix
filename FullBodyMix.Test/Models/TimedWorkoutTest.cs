@@ -16,7 +16,7 @@ namespace FullBodyMix.Models
 		{
 			var workout = new TimedWorkout
 			{
-				Duration = TimeSpan.FromMinutes(45),
+				Duration = TimeSpan.FromMinutes(4),
 				Exercises = ImmutableList.Create(
 					new Exercise
 					{
@@ -39,6 +39,8 @@ namespace FullBodyMix.Models
 						FocusArea = FocusArea.Lower,
 					}
 				),
+				RestTime = TimeSpan.FromSeconds(15),
+				WorkTime = TimeSpan.FromSeconds(45),
 			};
 			var workoutAsString = JsonSerializer.Serialize(workout);
 
@@ -47,6 +49,8 @@ namespace FullBodyMix.Models
 			// We can't assert the workout & actual instances directly
 			// because the list of exercises won't be the same instance
 			Assert.AreEqual(workout.Duration, actual.Duration);
+			Assert.AreEqual(workout.RestTime, actual.RestTime);
+			Assert.AreEqual(workout.WorkTime, actual.WorkTime);
 			CollectionAssert.AreEqual(workout.Exercises, actual.Exercises);
 		}
 	}
