@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Immutable;
-using System.Text.Json.Serialization;
+﻿using System.Collections.Immutable;
 
 namespace FullBodyMix.Models
 {
@@ -10,11 +8,5 @@ namespace FullBodyMix.Models
 		/// Every workout must be at least one exercise.
 		/// </summary>
 		public ImmutableList<Exercise> Exercises { get; init; }
-
-		/// <summary>
-		/// How long would this workout take to perform?
-		/// </summary>
-		[JsonConverter(typeof(JsonTimeSpanConverter))]
-		public TimeSpan Duration { get; init; } 
 	}
 }

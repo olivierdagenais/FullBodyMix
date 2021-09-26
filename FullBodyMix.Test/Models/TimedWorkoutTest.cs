@@ -1,20 +1,22 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FullBodyMix.Models
 {
 	/// <summary>
-	/// A class to test <see cref="Workout"/>.
+	/// A class to test <see cref="TimedWorkout"/>.
 	/// </summary>
 	[TestClass]
-	public class WorkoutTest
+	public class TimedWorkoutTest
 	{
 		[TestMethod]
 		public void SerializationRoundTrip()
 		{
-			var workout = new Workout
+			var workout = new TimedWorkout
 			{
+				Duration = TimeSpan.FromMinutes(45),
 				Exercises = ImmutableList.Create(
 					new Exercise
 					{
@@ -40,10 +42,11 @@ namespace FullBodyMix.Models
 			};
 			var workoutAsString = JsonSerializer.Serialize(workout);
 
-			var actual = JsonSerializer.Deserialize<Workout>(workoutAsString);
+			var actual = JsonSerializer.Deserialize<TimedWorkout>(workoutAsString);
 
 			// We can't assert the workout & actual instances directly
 			// because the list of exercises won't be the same instance
+			Assert.AreEqual(workout.Duration, actual.Duration);
 			CollectionAssert.AreEqual(workout.Exercises, actual.Exercises);
 		}
 	}
