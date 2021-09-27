@@ -11,26 +11,10 @@ namespace FullBodyMix.Models
 	public class WorkoutTest
 	{
 		public static readonly ImmutableList<Exercise> TestExercises = ImmutableList.Create(
-			new Exercise
-			{
-				Name = "Arm circles",
-				FocusArea = FocusArea.Upper,
-			},
-			new Exercise
-			{
-				Name = "Burpees",
-				FocusArea = FocusArea.Cardio,
-			},
-			new Exercise
-			{
-				Name = "Crunches",
-				FocusArea = FocusArea.Middle,
-			},
-			new Exercise
-			{
-				Name = "Squats",
-				FocusArea = FocusArea.Lower,
-			}
+			ExerciseTest.ArmCircles,
+			ExerciseTest.Burpees,
+			ExerciseTest.Crunches,
+			ExerciseTest.Squats
 		);
 
 		[TestMethod]

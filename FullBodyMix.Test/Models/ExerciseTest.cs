@@ -9,6 +9,12 @@ namespace FullBodyMix.Models
 	[TestClass]
 	public class ExerciseTest
 	{
+		public static readonly Exercise ArmCircles = new()
+		{
+			Name = "Arm circles",
+			FocusArea = FocusArea.Upper,
+		};
+
 		public static readonly Exercise Burpees = new()
 		{
 			Name = "Burpees",
@@ -20,6 +26,18 @@ namespace FullBodyMix.Models
 4. Bring your feet back into a crouching position
 5. Stand up
 6. Repeat",
+		};
+
+		public static readonly Exercise Crunches = new()
+		{
+			Name = "Crunches",
+			FocusArea = FocusArea.Middle,
+		};
+
+		public static readonly Exercise Squats = new()
+		{
+			Name = "Squats",
+			FocusArea = FocusArea.Lower,
 		};
 
 		[TestMethod]
