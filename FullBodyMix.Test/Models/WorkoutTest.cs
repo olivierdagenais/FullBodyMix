@@ -10,33 +10,35 @@ namespace FullBodyMix.Models
 	[TestClass]
 	public class WorkoutTest
 	{
+		public static readonly ImmutableList<Exercise> TestExercises = ImmutableList.Create(
+			new Exercise
+			{
+				Name = "Arm circles",
+				FocusArea = FocusArea.Upper,
+			},
+			new Exercise
+			{
+				Name = "Burpees",
+				FocusArea = FocusArea.Cardio,
+			},
+			new Exercise
+			{
+				Name = "Crunches",
+				FocusArea = FocusArea.Middle,
+			},
+			new Exercise
+			{
+				Name = "Squats",
+				FocusArea = FocusArea.Lower,
+			}
+		);
+
 		[TestMethod]
 		public void SerializationRoundTrip()
 		{
 			var workout = new Workout
 			{
-				Exercises = ImmutableList.Create(
-					new Exercise
-					{
-						Name = "Arm circles",
-						FocusArea = FocusArea.Upper,
-					},
-					new Exercise
-					{
-						Name = "Burpees",
-						FocusArea = FocusArea.Cardio,
-					},
-					new Exercise
-					{
-						Name = "Crunches",
-						FocusArea = FocusArea.Middle,
-					},
-					new Exercise
-					{
-						Name = "Squats",
-						FocusArea = FocusArea.Lower,
-					}
-				),
+				Exercises = TestExercises,
 			};
 			var workoutAsString = JsonSerializer.Serialize(workout);
 

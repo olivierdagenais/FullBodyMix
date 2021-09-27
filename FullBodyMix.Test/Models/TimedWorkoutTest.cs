@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Immutable;
 using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,28 +16,7 @@ namespace FullBodyMix.Models
 			var workout = new TimedWorkout
 			{
 				Duration = TimeSpan.FromMinutes(4),
-				Exercises = ImmutableList.Create(
-					new Exercise
-					{
-						Name = "Arm circles",
-						FocusArea = FocusArea.Upper,
-					},
-					new Exercise
-					{
-						Name = "Burpees",
-						FocusArea = FocusArea.Cardio,
-					},
-					new Exercise
-					{
-						Name = "Crunches",
-						FocusArea = FocusArea.Middle,
-					},
-					new Exercise
-					{
-						Name = "Squats",
-						FocusArea = FocusArea.Lower,
-					}
-				),
+				Exercises = WorkoutTest.TestExercises,
 				RestTime = TimeSpan.FromSeconds(15),
 				WorkTime = TimeSpan.FromSeconds(45),
 			};
