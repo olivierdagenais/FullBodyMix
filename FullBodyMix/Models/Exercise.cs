@@ -13,7 +13,7 @@ namespace FullBodyMix.Models
 		/// What is the primary area of focus for the exercise?
 		/// </summary>
 		[JsonConverter(typeof(JsonStringEnumMemberConverter))]
-		public FocusArea FocusArea { get; init; } 
+		public FocusArea FocusArea { get; init; }
 
 		/// <summary>
 		/// What details would help a newcomer perform this exercise correctly?

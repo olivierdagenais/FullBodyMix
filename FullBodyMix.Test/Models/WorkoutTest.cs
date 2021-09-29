@@ -13,10 +13,10 @@ namespace FullBodyMix.Models
 	{
 		public static readonly PerformanceParameters FortyFiveFifteen
 			= new PerformanceParameters
-		{
-			WorkTime = TimeSpan.FromSeconds(45),
-			RestTime = TimeSpan.FromSeconds(15),
-		};
+			{
+				WorkTime = TimeSpan.FromSeconds(45),
+				RestTime = TimeSpan.FromSeconds(15),
+			};
 
 		public static readonly ImmutableList<PlaylistEntry> TestPlaylist = new[]
 		{
