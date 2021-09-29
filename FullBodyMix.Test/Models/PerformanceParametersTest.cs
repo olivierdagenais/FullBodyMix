@@ -11,6 +11,20 @@ namespace FullBodyMix.Models
 	public class PerformanceParametersTest
 	{
 		[TestMethod]
+		public void SerializationRoundTrip_Naked()
+		{
+			var parameters = new PerformanceParameters
+			{
+			};
+			var parametersAsString = JsonSerializer.Serialize(parameters);
+
+			var actual = JsonSerializer.Deserialize<PerformanceParameters>(parametersAsString);
+
+			Assert.AreEqual(parameters.RestTime, actual.RestTime);
+			Assert.AreEqual(parameters.WorkTime, actual.WorkTime);
+		}
+
+		[TestMethod]
 		public void SerializationRoundTrip_WithWorkAndRestTime()
 		{
 			var parameters = new PerformanceParameters

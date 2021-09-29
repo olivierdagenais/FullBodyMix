@@ -9,12 +9,12 @@ namespace FullBodyMix.Models
 		/// How long is the pause until the next exercise?
 		/// </summary>
 		[JsonConverter(typeof(JsonTimeSpanConverter))]
-		public TimeSpan RestTime { get; init; }
+		public TimeSpan? RestTime { get; init; }
 
 		/// <summary>
 		/// How long should the exercise be performed for?
 		/// </summary>
 		[JsonConverter(typeof(JsonTimeSpanConverter))]
-		public TimeSpan WorkTime { get; init; }
+		public TimeSpan? WorkTime { get; init; }
 	}
 }
