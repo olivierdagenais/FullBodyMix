@@ -10,12 +10,8 @@ namespace FullBodyMix.Models
 	[TestClass]
 	public class PerformanceParametersTest
 	{
-		[TestMethod]
-		public void SerializationRoundTrip_Naked()
+		static void SerializationRoundTrip(PerformanceParameters parameters)
 		{
-			var parameters = new PerformanceParameters
-			{
-			};
 			var parametersAsString = JsonSerializer.Serialize(parameters);
 
 			var actual = JsonSerializer.Deserialize<PerformanceParameters>(parametersAsString);
@@ -23,6 +19,16 @@ namespace FullBodyMix.Models
 			Assert.AreEqual(parameters.Repetitions, actual.Repetitions);
 			Assert.AreEqual(parameters.RestTime, actual.RestTime);
 			Assert.AreEqual(parameters.WorkTime, actual.WorkTime);
+		}
+
+		[TestMethod]
+		public void SerializationRoundTrip_Naked()
+		{
+			var parameters = new PerformanceParameters
+			{
+			};
+
+			SerializationRoundTrip(parameters);
 		}
 
 		[TestMethod]
@@ -34,13 +40,8 @@ namespace FullBodyMix.Models
 				RestTime = TimeSpan.FromSeconds(15),
 				WorkTime = TimeSpan.FromSeconds(45),
 			};
-			var parametersAsString = JsonSerializer.Serialize(parameters);
 
-			var actual = JsonSerializer.Deserialize<PerformanceParameters>(parametersAsString);
-
-			Assert.AreEqual(parameters.Repetitions, actual.Repetitions);
-			Assert.AreEqual(parameters.RestTime, actual.RestTime);
-			Assert.AreEqual(parameters.WorkTime, actual.WorkTime);
+			SerializationRoundTrip(parameters);
 		}
 
 		[TestMethod]
@@ -50,13 +51,8 @@ namespace FullBodyMix.Models
 			{
 				Repetitions = 10,
 			};
-			var parametersAsString = JsonSerializer.Serialize(parameters);
 
-			var actual = JsonSerializer.Deserialize<PerformanceParameters>(parametersAsString);
-
-			Assert.AreEqual(parameters.Repetitions, actual.Repetitions);
-			Assert.AreEqual(parameters.RestTime, actual.RestTime);
-			Assert.AreEqual(parameters.WorkTime, actual.WorkTime);
+			SerializationRoundTrip(parameters);
 		}
 
 		[TestMethod]
@@ -67,13 +63,8 @@ namespace FullBodyMix.Models
 				RestTime = TimeSpan.FromSeconds(15),
 				WorkTime = TimeSpan.FromSeconds(45),
 			};
-			var parametersAsString = JsonSerializer.Serialize(parameters);
 
-			var actual = JsonSerializer.Deserialize<PerformanceParameters>(parametersAsString);
-
-			Assert.AreEqual(parameters.Repetitions, actual.Repetitions);
-			Assert.AreEqual(parameters.RestTime, actual.RestTime);
-			Assert.AreEqual(parameters.WorkTime, actual.WorkTime);
+			SerializationRoundTrip(parameters);
 		}
 	}
 }
