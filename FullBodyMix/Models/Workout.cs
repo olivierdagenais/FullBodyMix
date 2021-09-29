@@ -5,8 +5,8 @@ namespace FullBodyMix.Models
 	public record Workout
 	{
 		/// <summary>
-		/// Every workout must be at least one exercise.
+		/// Every workout must be at least one <see cref="PlaylistEntry"/>.
 		/// </summary>
-		public ImmutableList<Exercise> Exercises { get; init; }
+		public ImmutableList<PlaylistEntry> Playlist { get; init; }
 	}
 }
