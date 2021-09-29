@@ -6,6 +6,11 @@ namespace FullBodyMix.Models
 	public record PerformanceParameters
 	{
 		/// <summary>
+		/// How many repetitions to perform?
+		/// </summary>
+		public int? Repetitions { get; init; }
+
+		/// <summary>
 		/// How long is the pause until the next exercise?
 		/// </summary>
 		[JsonConverter(typeof(JsonTimeSpanConverter))]
