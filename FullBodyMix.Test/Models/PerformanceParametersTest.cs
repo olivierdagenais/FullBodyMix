@@ -11,7 +11,7 @@ namespace FullBodyMix.Models
 	public class PerformanceParametersTest
 	{
 		[TestMethod]
-		public void SerializationRoundTrip()
+		public void SerializationRoundTrip_WithWorkAndRestTime()
 		{
 			var parameters = new PerformanceParameters
 			{
