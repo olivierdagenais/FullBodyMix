@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace FullBodyMix.Models
 {
-	public record TimedPerformanceParameters
+	public record PerformanceParameters
 	{
 		/// <summary>
 		/// How long is the pause until the next exercise?
