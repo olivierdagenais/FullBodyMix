@@ -11,12 +11,11 @@ namespace FullBodyMix.Models
 	[TestClass]
 	public class WorkoutTest
 	{
-		public static readonly PerformanceParameters FortyFiveFifteen
-			= new PerformanceParameters
-			{
-				WorkTime = TimeSpan.FromSeconds(45),
-				RestTime = TimeSpan.FromSeconds(15),
-			};
+		public static readonly PerformanceParameters FortyFiveFifteen = new()
+		{
+			WorkTime = TimeSpan.FromSeconds(45),
+			RestTime = TimeSpan.FromSeconds(15),
+		};
 
 		public static readonly ImmutableList<PlaylistEntry> TestPlaylist = new[]
 		{
