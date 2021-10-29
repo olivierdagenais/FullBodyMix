@@ -38,6 +38,23 @@ namespace FullBodyMix.Models
 		}.ToImmutableList();
 
 		[TestMethod]
+		public void Perform_EmptyPlaylist()
+		{
+			var cut = new Workout()
+			{
+				Playlist = ImmutableList.Create<PlaylistEntry>(),
+			};
+			var executed = false;
+
+			cut.Perform(vp => {
+				executed = true;
+				return Result.Continue;
+			});
+
+			Assert.IsFalse(executed);
+		}
+
+		[TestMethod]
 		public void Perform_NullPlaylist()
 		{
 			var cut = new Workout();
