@@ -28,7 +28,8 @@ namespace FullBodyMix.Models
 			var sb = new StringBuilder();
 			if (WorkTime.HasValue)
 			{
-				sb.Append($"{WorkTime.Value.TotalSeconds} seconds");
+				sb.Append(WorkTime.Value.TotalSeconds);
+				sb.Append(" seconds");
 			}
 			if (WorkTime.HasValue && Repetitions.HasValue)
 			{
