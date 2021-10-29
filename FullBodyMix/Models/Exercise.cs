@@ -16,6 +16,14 @@ namespace FullBodyMix.Models
 		public FocusArea FocusArea { get; init; }
 
 		/// <summary>
+		/// Most exercises activate muscles on both sides of the body or
+		/// are performed in an alternating fashion. Some exercises are
+		/// performed by focusing on one side at a time. If the exercise
+		/// is in the latter camp, set this property to <c>2</c>.
+		/// </summary>
+		public int Sides { get; init; } = 1;
+
+		/// <summary>
 		/// What details would help a newcomer perform this exercise correctly?
 		/// </summary>
 		public string Description { get; init; }

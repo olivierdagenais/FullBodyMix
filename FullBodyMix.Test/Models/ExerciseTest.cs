@@ -34,6 +34,13 @@ namespace FullBodyMix.Models
 			FocusArea = FocusArea.Middle,
 		};
 
+		public static readonly Exercise Lunges = new()
+		{
+			Name = nameof(Lunges),
+			Sides = 2,
+			FocusArea = FocusArea.Lower,
+		};
+
 		public static readonly Exercise Squats = new()
 		{
 			Name = nameof(Squats),
@@ -49,6 +56,22 @@ namespace FullBodyMix.Models
 			var actual = JsonSerializer.Deserialize<Exercise>(exerciseAsString);
 
 			Assert.AreEqual(exercise, actual);
+		}
+
+		[TestMethod]
+		public void Sides_DefaultsToOne()
+		{
+			var actual = Burpees.Sides;
+
+			Assert.AreEqual(1, actual);
+		}
+
+		[TestMethod]
+		public void Sides_LungesHaveTwo()
+		{
+			var actual = Lunges.Sides;
+
+			Assert.AreEqual(2, actual);
 		}
 	}
 }
