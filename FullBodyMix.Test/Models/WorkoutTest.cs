@@ -38,6 +38,20 @@ namespace FullBodyMix.Models
 		}.ToImmutableList();
 
 		[TestMethod]
+		public void Perform_NullPlaylist()
+		{
+			var cut = new Workout();
+			var executed = false;
+
+			cut.Perform(vp => {
+				executed = true;
+				return Result.Continue;
+			});
+
+			Assert.IsFalse(executed);
+		}
+
+		[TestMethod]
 		public void SerializationRoundTrip()
 		{
 			var workout = new Workout

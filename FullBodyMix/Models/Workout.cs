@@ -1,4 +1,5 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Immutable;
 
 namespace FullBodyMix.Models
 {
@@ -8,5 +9,10 @@ namespace FullBodyMix.Models
 		/// Every workout must be at least one <see cref="PlaylistEntry"/>.
 		/// </summary>
 		public ImmutableList<PlaylistEntry> Playlist { get; init; }
+
+		public void Perform(Func<ViewParameters, Result> callback)
+		{
+
+		}
 	}
 }
