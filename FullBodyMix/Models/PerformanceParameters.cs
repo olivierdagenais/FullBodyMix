@@ -21,5 +21,10 @@ namespace FullBodyMix.Models
 		/// </summary>
 		[JsonConverter(typeof(JsonTimeSpanConverter))]
 		public TimeSpan? WorkTime { get; init; }
+
+		public string Describe()
+		{
+			return "unspecified";
+		}
 	}
 }

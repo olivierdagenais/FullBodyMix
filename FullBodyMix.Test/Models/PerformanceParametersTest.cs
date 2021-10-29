@@ -10,6 +10,16 @@ namespace FullBodyMix.Models
 	[TestClass]
 	public class PerformanceParametersTest
 	{
+		[TestMethod]
+		public void Describe_Blank()
+		{
+			var cut = new PerformanceParameters();
+
+			var actual = cut.Describe();
+
+			Assert.AreEqual("unspecified", actual);
+		}
+
 		static void SerializationRoundTrip(PerformanceParameters parameters)
 		{
 			var parametersAsString = JsonSerializer.Serialize(parameters);
