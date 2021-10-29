@@ -37,7 +37,7 @@ namespace FullBodyMix.Models
 			}
 			if (Repetitions.HasValue)
 			{
-				sb.Append(Repetitions.Value.ToString());
+				sb.Append(Repetitions.Value);
 			}
 			if (sb.Length > 0)
 			{
