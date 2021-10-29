@@ -24,7 +24,14 @@ namespace FullBodyMix.Models
 
 		public string Describe()
 		{
-			return "unspecified";
+			if (Repetitions.HasValue)
+			{
+				return Repetitions.Value.ToString();
+			}
+			else
+			{
+				return "unspecified";
+			}
 		}
 	}
 }

@@ -20,6 +20,19 @@ namespace FullBodyMix.Models
 			Assert.AreEqual("unspecified", actual);
 		}
 
+		[TestMethod]
+		public void Describe_Repetitions()
+		{
+			var cut = new PerformanceParameters
+			{
+				Repetitions = 20,
+			};
+
+			var actual = cut.Describe();
+
+			Assert.AreEqual("20", actual);
+		}
+
 		static void SerializationRoundTrip(PerformanceParameters parameters)
 		{
 			var parametersAsString = JsonSerializer.Serialize(parameters);
