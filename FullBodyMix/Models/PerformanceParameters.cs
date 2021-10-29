@@ -24,6 +24,10 @@ namespace FullBodyMix.Models
 
 		public string Describe()
 		{
+			if (WorkTime.HasValue)
+			{
+				return $"{WorkTime.Value.TotalSeconds} seconds";
+			}
 			if (Repetitions.HasValue)
 			{
 				return Repetitions.Value.ToString();

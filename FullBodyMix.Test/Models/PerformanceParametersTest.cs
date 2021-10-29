@@ -33,6 +33,19 @@ namespace FullBodyMix.Models
 			Assert.AreEqual("20", actual);
 		}
 
+		[TestMethod]
+		public void Describe_WorkTime()
+		{
+			var cut = new PerformanceParameters
+			{
+				WorkTime = TimeSpan.FromSeconds(45),
+			};
+
+			var actual = cut.Describe();
+
+			Assert.AreEqual("45 seconds", actual);
+		}
+
 		static void SerializationRoundTrip(PerformanceParameters parameters)
 		{
 			var parametersAsString = JsonSerializer.Serialize(parameters);
