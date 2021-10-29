@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace FullBodyMix.Models
@@ -24,13 +25,22 @@ namespace FullBodyMix.Models
 
 		public string Describe()
 		{
+			var sb = new StringBuilder();
 			if (WorkTime.HasValue)
 			{
-				return $"{WorkTime.Value.TotalSeconds} seconds";
+				sb.Append($"{WorkTime.Value.TotalSeconds} seconds");
+			}
+			if (WorkTime.HasValue && Repetitions.HasValue)
+			{
+				sb.Append(" OR ");
 			}
 			if (Repetitions.HasValue)
 			{
-				return Repetitions.Value.ToString();
+				sb.Append(Repetitions.Value.ToString());
+			}
+			if (sb.Length > 0)
+			{
+				return sb.ToString();
 			}
 			else
 			{
