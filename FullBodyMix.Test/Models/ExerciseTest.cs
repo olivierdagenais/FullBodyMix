@@ -17,7 +17,7 @@ namespace FullBodyMix.Models
 
 		public static readonly Exercise Burpees = new()
 		{
-			Name = "Burpees",
+			Name = nameof(Burpees),
 			FocusArea = FocusArea.Cardio,
 			Description = @"Start standing up
 1. Crouch down
@@ -30,13 +30,13 @@ namespace FullBodyMix.Models
 
 		public static readonly Exercise Crunches = new()
 		{
-			Name = "Crunches",
+			Name = nameof(Crunches),
 			FocusArea = FocusArea.Middle,
 		};
 
 		public static readonly Exercise Squats = new()
 		{
-			Name = "Squats",
+			Name = nameof(Squats),
 			FocusArea = FocusArea.Lower,
 		};
 
