@@ -115,5 +115,13 @@ namespace FullBodyMix.Models
 
 			TestCallbackNotCalled(cut.Start);
 		}
+
+		[TestMethod]
+		public void Start_NullPlaylist()
+		{
+			var cut = new Workout();
+
+			TestCallbackNotCalled(cut.Start);
+		}
 	}
 }
