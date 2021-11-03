@@ -55,16 +55,14 @@ namespace FullBodyMix.Models
 			}.ToImmutableList(),
 		};
 
-		[TestMethod]
-		public void Perform_EmptyPlaylist()
+		private static void TestCallbackNotCalled(
+			Action<Func<ViewParameters, Result>> mut
+		)
 		{
-			var cut = new Workout()
-			{
-				Playlist = ImmutableList.Create<PlaylistEntry>(),
-			};
 			var executed = false;
 
-			cut.Perform(vp => {
+			mut.Invoke(vp =>
+			{
 				executed = true;
 				return Result.Continue;
 			});
@@ -73,17 +71,22 @@ namespace FullBodyMix.Models
 		}
 
 		[TestMethod]
+		public void Perform_EmptyPlaylist()
+		{
+			var cut = new Workout()
+			{
+				Playlist = ImmutableList.Create<PlaylistEntry>(),
+			};
+
+			TestCallbackNotCalled(cut.Perform);
+		}
+
+		[TestMethod]
 		public void Perform_NullPlaylist()
 		{
 			var cut = new Workout();
-			var executed = false;
 
-			cut.Perform(vp => {
-				executed = true;
-				return Result.Continue;
-			});
-
-			Assert.IsFalse(executed);
+			TestCallbackNotCalled(cut.Perform);
 		}
 
 		[TestMethod]
@@ -109,14 +112,8 @@ namespace FullBodyMix.Models
 			{
 				Playlist = ImmutableList.Create<PlaylistEntry>(),
 			};
-			var executed = false;
 
-			cut.Start(vp => {
-				executed = true;
-				return Result.Continue;
-			});
-
-			Assert.IsFalse(executed);
+			TestCallbackNotCalled(cut.Start);
 		}
 	}
 }
