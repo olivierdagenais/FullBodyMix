@@ -101,5 +101,22 @@ namespace FullBodyMix.Models
 			// because the Playlist won't be the same instance
 			CollectionAssert.AreEqual(workout.Playlist, actual.Playlist);
 		}
+
+		[TestMethod]
+		public void Start_EmptyPlaylist()
+		{
+			var cut = new Workout()
+			{
+				Playlist = ImmutableList.Create<PlaylistEntry>(),
+			};
+			var executed = false;
+
+			cut.Start(vp => {
+				executed = true;
+				return Result.Continue;
+			});
+
+			Assert.IsFalse(executed);
+		}
 	}
 }

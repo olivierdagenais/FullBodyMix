@@ -24,5 +24,10 @@ namespace FullBodyMix.Models
 		{
 
 		}
+
+		internal void Start(Callback callback)
+		{
+
+		}
 	}
 }
