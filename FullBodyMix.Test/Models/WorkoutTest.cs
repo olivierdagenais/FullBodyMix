@@ -37,6 +37,24 @@ namespace FullBodyMix.Models
 			},
 		}.ToImmutableList();
 
+		public static readonly PlaylistEntry BurpeesFiveFive = new()
+		{
+			Exercise = ExerciseTest.Burpees,
+			PerformanceParameters = new PerformanceParameters
+			{
+				WorkTime = TimeSpan.FromSeconds(5),
+				RestTime = TimeSpan.FromSeconds(5),
+			},
+		};
+
+		public static readonly Workout SmallestPossibleWorkout = new()
+		{
+			Playlist = new[]
+			{
+				BurpeesFiveFive,
+			}.ToImmutableList(),
+		};
+
 		[TestMethod]
 		public void Perform_EmptyPlaylist()
 		{
