@@ -27,7 +27,32 @@ namespace FullBodyMix.Models
 
 		internal void Start(Callback callback)
 		{
-
+			if (Playlist == null || Playlist.Count < 1)
+			{
+				return;
+			}
+			var firstEntry = Playlist[0];
+			var firstExercise = firstEntry.Exercise;
+			var firstParameters = firstEntry.PerformanceParameters;
+			var nextUp = $"Next: {firstParameters.Describe()} {firstExercise.Name}";
+			var spoken = nextUp;
+			int startDelaySeconds = Convert.ToInt32(StartDelay.TotalSeconds);
+			for (int sec = startDelaySeconds; sec >= 4; sec--)
+			{
+				var vp = new ViewParameters
+				{
+					CurrentEntry = firstEntry,
+					CurrentMode = Mode.Preparing,
+					CurrentProgress = sec.ToString(),
+					OverallProgress = $"1 of {Playlist.Count}",
+					SpokenAnnouncement = spoken,
+				};
+				callback(vp);
+				if (sec == startDelaySeconds)
+				{
+					spoken = null;
+				}
+			}
 		}
 	}
 }

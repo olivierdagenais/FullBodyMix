@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text.Json;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -122,6 +123,41 @@ namespace FullBodyMix.Models
 			var cut = new Workout();
 
 			TestCallbackNotCalled(cut.Start);
+		}
+
+		[TestMethod]
+		public void Start_SmallestPossibleWorkout()
+		{
+			var expected = new[]
+			{
+				new ViewParameters
+				{
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "5",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "Next: 5 seconds Burpees",
+				},
+				new ViewParameters
+				{
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "4",
+					OverallProgress = "1 of 1",
+				},
+			}.ToImmutableList();
+
+			var actual = new List<ViewParameters>();
+			SmallestPossibleWorkout.Start(vp => {
+				actual.Add(vp);
+				return Result.Continue;
+			});
+
+			Assert.AreEqual(expected.Count, actual.Count);
+			for (int i = 0; i < expected.Count; i++)
+			{
+				Assert.AreEqual(expected[i], actual[i]);
+			}
 		}
 	}
 }
