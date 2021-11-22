@@ -158,7 +158,8 @@ namespace FullBodyMix.Models
 
 		internal static void ListsEqual<T>(IList<T> expected, IList<T> actual)
 		{
-			Assert.AreEqual(expected.Count, actual.Count);
+			const string message = "Expected lists to be of the same length";
+			Assert.AreEqual(expected.Count, actual.Count, message);
 			for (int i = 0; i < expected.Count; i++)
 			{
 				Assert.AreEqual(expected[i], actual[i]);
