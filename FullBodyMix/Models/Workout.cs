@@ -42,6 +42,29 @@ namespace FullBodyMix.Models
 			}
 		}
 
+		internal static void StartEntry(
+			PlaylistEntry entry,
+			string overallProgress,
+			Callback callback)
+		{
+			var pp = entry.PerformanceParameters;
+			string currentProgress = null;
+			if (pp.WorkTime != null)
+			{
+				var workTime = pp.WorkTime.Value;
+				currentProgress = workTime.TotalSeconds.ToString();
+			}
+			var vp = new ViewParameters
+			{
+				CurrentEntry = entry,
+				CurrentMode = Mode.Performing,
+				CurrentProgress = currentProgress,
+				OverallProgress = overallProgress,
+				SpokenAnnouncement = "Go!",
+			};
+			callback(vp);
+		}
+
 		internal void StartWorkout(Callback callback)
 		{
 			if (Playlist == null || Playlist.Count < 1)

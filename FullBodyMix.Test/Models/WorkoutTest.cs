@@ -147,6 +147,30 @@ namespace FullBodyMix.Models
 		}
 
 		[TestMethod]
+		public void StartEntry_BurpeesFiveFive()
+		{
+			var expected = new[]
+			{
+				new ViewParameters
+				{
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "5",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "Go!",
+				},
+			}.ToImmutableList();
+
+			var actual = new List<ViewParameters>();
+			Workout.StartEntry(BurpeesFiveFive, "1 of 1", vp => {
+				actual.Add(vp);
+				return Result.Continue;
+			});
+
+			ListsEqual(expected, actual);
+		}
+
+		[TestMethod]
 		public void StartWorkout_EmptyPlaylist()
 		{
 			var cut = new Workout()
