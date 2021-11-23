@@ -131,6 +131,54 @@ namespace FullBodyMix.Models
 		}
 
 		[TestMethod]
+		public void PerformTimedEntry_BurpeesFiveFive()
+		{
+			var expected = new[]
+			{
+				new ViewParameters
+				{
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "4",
+					OverallProgress = "1 of 1",
+				},
+				new ViewParameters
+				{
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "3",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "3",
+				},
+				new ViewParameters
+				{
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "2",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "2",
+				},
+				new ViewParameters
+				{
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "1",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "1",
+				},
+			}.ToImmutableList();
+
+			var actual = new List<ViewParameters>();
+			Workout.PerformTimedEntry(BurpeesFiveFive, "1 of 1", vp => {
+				actual.Add(vp);
+				return Result.Continue;
+			});
+
+			ListsEqual(expected, actual);
+
+		}
+
+		[TestMethod]
 		public void SerializationRoundTrip()
 		{
 			var workout = new Workout
