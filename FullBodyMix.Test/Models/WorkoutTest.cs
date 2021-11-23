@@ -72,6 +72,46 @@ namespace FullBodyMix.Models
 		}
 
 		[TestMethod]
+		public void Countdown_BurpeesFiveFive()
+		{
+			var expected = new[]
+			{
+				new ViewParameters
+				{
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "3",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "3",
+				},
+				new ViewParameters
+				{
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "2",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "2",
+				},
+				new ViewParameters
+				{
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "1",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "1",
+				},
+			}.ToImmutableList();
+
+			var actual = new List<ViewParameters>();
+			Workout.Countdown(BurpeesFiveFive, "1 of 1", vp => {
+				actual.Add(vp);
+				return Result.Continue;
+			});
+
+			ListsEqual(expected, actual);
+		}
+
+		[TestMethod]
 		public void Perform_EmptyPlaylist()
 		{
 			var cut = new Workout()

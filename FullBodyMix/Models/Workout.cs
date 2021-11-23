@@ -25,6 +25,23 @@ namespace FullBodyMix.Models
 
 		}
 
+		internal static void Countdown
+			(PlaylistEntry entry, string overallProgress, Callback callback)
+		{
+			for (int sec = 3; sec > 0; sec--)
+			{
+				var vp = new ViewParameters
+				{
+					CurrentEntry = entry,
+					CurrentMode = Mode.Preparing,
+					CurrentProgress = sec.ToString(),
+					OverallProgress = overallProgress,
+					SpokenAnnouncement = sec.ToString(),
+				};
+				callback(vp);
+			}
+		}
+
 		internal void StartWorkout(Callback callback)
 		{
 			if (Playlist == null || Playlist.Count < 1)
