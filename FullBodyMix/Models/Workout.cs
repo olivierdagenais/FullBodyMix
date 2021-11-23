@@ -25,7 +25,7 @@ namespace FullBodyMix.Models
 
 		}
 
-		internal void Start(Callback callback)
+		internal void StartWorkout(Callback callback)
 		{
 			if (Playlist == null || Playlist.Count < 1)
 			{

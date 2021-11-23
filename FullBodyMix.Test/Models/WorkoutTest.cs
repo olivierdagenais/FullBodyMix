@@ -107,26 +107,26 @@ namespace FullBodyMix.Models
 		}
 
 		[TestMethod]
-		public void Start_EmptyPlaylist()
+		public void StartWorkout_EmptyPlaylist()
 		{
 			var cut = new Workout()
 			{
 				Playlist = ImmutableList.Create<PlaylistEntry>(),
 			};
 
-			TestCallbackNotCalled(cut.Start);
+			TestCallbackNotCalled(cut.StartWorkout);
 		}
 
 		[TestMethod]
-		public void Start_NullPlaylist()
+		public void StartWorkout_NullPlaylist()
 		{
 			var cut = new Workout();
 
-			TestCallbackNotCalled(cut.Start);
+			TestCallbackNotCalled(cut.StartWorkout);
 		}
 
 		[TestMethod]
-		public void Start_SmallestPossibleWorkout()
+		public void StartWorkout_SmallestPossibleWorkout()
 		{
 			var expected = new[]
 			{
@@ -148,7 +148,7 @@ namespace FullBodyMix.Models
 			}.ToImmutableList();
 
 			var actual = new List<ViewParameters>();
-			SmallestPossibleWorkout.Start(vp => {
+			SmallestPossibleWorkout.StartWorkout(vp => {
 				actual.Add(vp);
 				return Result.Continue;
 			});
