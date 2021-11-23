@@ -268,6 +268,30 @@ namespace FullBodyMix.Models
 			ListsEqual(expected, actual);
 		}
 
+		[TestMethod]
+		public void StopTimedEntry_BurpeesFiveFive()
+		{
+			var expected = new[]
+			{
+				new ViewParameters
+				{
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "0",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "Stop!",
+				},
+			}.ToImmutableList();
+
+			var actual = new List<ViewParameters>();
+			Workout.StopTimedEntry(BurpeesFiveFive, "1 of 1", vp => {
+				actual.Add(vp);
+				return Result.Continue;
+			});
+
+			ListsEqual(expected, actual);
+		}
+
 		internal static void ListsEqual<T>(IList<T> expected, IList<T> actual)
 		{
 			const string message = "Expected lists to be of the same length";

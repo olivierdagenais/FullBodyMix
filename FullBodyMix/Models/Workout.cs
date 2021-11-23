@@ -123,5 +123,22 @@ namespace FullBodyMix.Models
 				}
 			}
 		}
+
+		internal static void StopTimedEntry(
+			PlaylistEntry entry,
+			string overallProgress,
+			Callback callback)
+		{
+			var pp = entry.PerformanceParameters;
+			var vp = new ViewParameters
+			{
+				CurrentEntry = entry,
+				CurrentMode = Mode.Performing,
+				CurrentProgress = "0",
+				OverallProgress = overallProgress,
+				SpokenAnnouncement = "Stop!",
+			};
+			callback(vp);
+		}
 	}
 }
