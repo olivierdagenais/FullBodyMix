@@ -294,12 +294,13 @@ namespace FullBodyMix.Models
 
 		internal static void ListsEqual<T>(IList<T> expected, IList<T> actual)
 		{
+			var smallestCount = Math.Min(expected.Count, actual.Count);
+			for (int i = 0; i < smallestCount; i++)
+			{
+				Assert.AreEqual(expected[i], actual[i], $"Lists differ at index {i}");
+			}
 			const string message = "Expected lists to be of the same length";
 			Assert.AreEqual(expected.Count, actual.Count, message);
-			for (int i = 0; i < expected.Count; i++)
-			{
-				Assert.AreEqual(expected[i], actual[i]);
-			}
 		}
 	}
 }
