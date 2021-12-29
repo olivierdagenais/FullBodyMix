@@ -131,6 +131,97 @@ namespace FullBodyMix.Models
 		}
 
 		[TestMethod]
+		public void Perform_OneItemPlaylist()
+		{
+			var actual = new List<ViewParameters>();
+			var expected = new List<ViewParameters>
+			{
+				new ViewParameters {
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "5",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "Next: 5 seconds Burpees",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "4",
+					OverallProgress = "1 of 1",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "3",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "3",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "2",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "2",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Preparing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "1",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "1",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "5",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "Go!",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "4",
+					OverallProgress = "1 of 1",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "3",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "3",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "2",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "2",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "1",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "1",
+				},
+				new ViewParameters {
+					CurrentMode = Mode.Performing,
+					CurrentEntry = BurpeesFiveFive,
+					CurrentProgress = "0",
+					OverallProgress = "1 of 1",
+					SpokenAnnouncement = "Stop!",
+				},
+			};
+
+			SmallestPossibleWorkout.Perform(vp => {
+				actual.Add(vp);
+				return Result.Continue;
+			});
+
+			ListsEqual(expected, actual);
+		}
+
+		[TestMethod]
 		public void PerformTimedEntry_BurpeesFiveFive()
 		{
 			var expected = new[]

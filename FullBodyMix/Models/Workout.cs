@@ -22,7 +22,20 @@ namespace FullBodyMix.Models
 
 		public void Perform(Callback callback)
 		{
-
+			StartWorkout(callback);
+			foreach (var playlistEntry in Playlist)
+			{
+				// TODO: de-hardcode overallProgress
+				var overallProgress = $"1 of {Playlist.Count}";
+				Countdown(playlistEntry, overallProgress, callback);
+				StartEntry(playlistEntry, overallProgress, callback);
+				var parameters = playlistEntry.PerformanceParameters;
+				if (parameters.WorkTime != null)
+				{
+					PerformTimedEntry(playlistEntry, overallProgress, callback);
+					StopTimedEntry(playlistEntry, overallProgress, callback);
+				}
+			}
 		}
 
 		internal static void Countdown
