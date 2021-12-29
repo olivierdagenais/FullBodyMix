@@ -22,6 +22,10 @@ namespace FullBodyMix.Models
 
 		public void Perform(Callback callback)
 		{
+			if (Playlist is null)
+			{
+				return;
+			}
 			StartWorkout(callback);
 			foreach (var playlistEntry in Playlist)
 			{
