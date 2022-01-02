@@ -123,6 +123,7 @@ namespace FullBodyMix.Models
 			var nextUp = $"Next: {firstParameters.Describe()} {firstExercise.Name}";
 			var spoken = nextUp;
 			int seconds = Convert.ToInt32(StartDelay.TotalSeconds);
+			var overallProgress = $"1 of {Playlist.Count}";
 			for (int sec = seconds; sec >= 4; sec--)
 			{
 				var vp = new ViewParameters
@@ -130,7 +131,7 @@ namespace FullBodyMix.Models
 					CurrentEntry = firstEntry,
 					CurrentMode = Mode.Preparing,
 					CurrentProgress = sec.ToString(),
-					OverallProgress = $"1 of {Playlist.Count}",
+					OverallProgress = overallProgress,
 					SpokenAnnouncement = spoken,
 				};
 				callback(vp);
