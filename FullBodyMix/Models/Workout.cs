@@ -122,8 +122,8 @@ namespace FullBodyMix.Models
 			var firstParameters = firstEntry.PerformanceParameters;
 			var nextUp = $"Next: {firstParameters.Describe()} {firstExercise.Name}";
 			var spoken = nextUp;
-			int startDelaySeconds = Convert.ToInt32(StartDelay.TotalSeconds);
-			for (int sec = startDelaySeconds; sec >= 4; sec--)
+			int seconds = Convert.ToInt32(StartDelay.TotalSeconds);
+			for (int sec = seconds; sec >= 4; sec--)
 			{
 				var vp = new ViewParameters
 				{
@@ -134,7 +134,7 @@ namespace FullBodyMix.Models
 					SpokenAnnouncement = spoken,
 				};
 				callback(vp);
-				if (sec == startDelaySeconds)
+				if (sec == seconds)
 				{
 					spoken = null;
 				}
