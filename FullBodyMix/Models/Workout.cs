@@ -125,17 +125,26 @@ namespace FullBodyMix.Models
 				return;
 			}
 			var firstEntry = Playlist[0];
-			var firstExercise = firstEntry.Exercise;
-			var firstParameters = firstEntry.PerformanceParameters;
-			var nextUp = $"Next: {firstParameters.Describe()} {firstExercise.Name}";
-			var spoken = nextUp;
-			int seconds = Convert.ToInt32(StartDelay.TotalSeconds);
 			var overallProgress = GetOverallProgress(1);
+			StartPreparing(firstEntry, StartDelay, overallProgress, callback);
+		}
+
+		internal void StartPreparing(
+			PlaylistEntry entry,
+			TimeSpan preparationTime,
+			string overallProgress,
+			Callback callback)
+		{
+			int seconds = Convert.ToInt32(preparationTime.TotalSeconds);
+			var firstExercise = entry.Exercise;
+			var parameters = entry.PerformanceParameters;
+			var nextUp = $"Next: {parameters.Describe()} {firstExercise.Name}";
+			var spoken = nextUp;
 			for (int sec = seconds; sec >= 4; sec--)
 			{
 				var vp = new ViewParameters
 				{
-					CurrentEntry = firstEntry,
+					CurrentEntry = entry,
 					CurrentMode = Mode.Preparing,
 					CurrentProgress = sec.ToString(),
 					OverallProgress = overallProgress,
