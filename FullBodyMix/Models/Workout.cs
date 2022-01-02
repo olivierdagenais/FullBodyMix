@@ -30,7 +30,7 @@ namespace FullBodyMix.Models
 			foreach (var playlistEntry in Playlist)
 			{
 				// TODO: de-hardcode overallProgress
-				var overallProgress = $"1 of {Playlist.Count}";
+				var overallProgress = GetOverallProgress(1);
 				Countdown(playlistEntry, overallProgress, callback);
 				StartEntry(playlistEntry, overallProgress, callback);
 				var parameters = playlistEntry.PerformanceParameters;
@@ -40,6 +40,12 @@ namespace FullBodyMix.Models
 					StopTimedEntry(playlistEntry, overallProgress, callback);
 				}
 			}
+		}
+
+		internal string GetOverallProgress(int step)
+		{
+			var result = $"{step} of {Playlist.Count}";
+			return result;
 		}
 
 		internal static void Countdown
@@ -123,7 +129,7 @@ namespace FullBodyMix.Models
 			var nextUp = $"Next: {firstParameters.Describe()} {firstExercise.Name}";
 			var spoken = nextUp;
 			int seconds = Convert.ToInt32(StartDelay.TotalSeconds);
-			var overallProgress = $"1 of {Playlist.Count}";
+			var overallProgress = GetOverallProgress(1);
 			for (int sec = seconds; sec >= 4; sec--)
 			{
 				var vp = new ViewParameters
