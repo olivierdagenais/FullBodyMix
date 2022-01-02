@@ -30,8 +30,7 @@ namespace FullBodyMix.Models
 			for (int i = 0; i < Playlist.Count; i++)
 			{
 				var playlistEntry = Playlist[i];
-				// TODO: de-hardcode overallProgress
-				var overallProgress = GetOverallProgress(1);
+				var overallProgress = GetOverallProgress(i + 1);
 				Countdown(playlistEntry, overallProgress, callback);
 				StartEntry(playlistEntry, overallProgress, callback);
 				var parameters = playlistEntry.PerformanceParameters;
@@ -39,6 +38,13 @@ namespace FullBodyMix.Models
 				{
 					PerformTimedEntry(playlistEntry, overallProgress, callback);
 					StopTimedEntry(playlistEntry, overallProgress, callback);
+				}
+				if (i + 1 < Playlist.Count && parameters.RestTime != null)
+				{
+					var nextEntry = Playlist[i + 1];
+					var restTime = parameters.RestTime.Value;
+					var nextProgress = GetOverallProgress(i + 2);
+					StartPreparing(nextEntry, restTime, nextProgress, callback);
 				}
 			}
 		}
