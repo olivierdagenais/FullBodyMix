@@ -27,8 +27,9 @@ namespace FullBodyMix.Models
 				return;
 			}
 			StartWorkout(callback);
-			foreach (var playlistEntry in Playlist)
+			for (int i = 0; i < Playlist.Count; i++)
 			{
+				var playlistEntry = Playlist[i];
 				// TODO: de-hardcode overallProgress
 				var overallProgress = GetOverallProgress(1);
 				Countdown(playlistEntry, overallProgress, callback);
