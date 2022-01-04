@@ -1,12 +1,27 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
-    <NavMenu />
-</div>
-
 <div class="main">
-    <div class="top-row px-4">
-        <a href="https://github.com/olivierdagenais/FullBodyMix" target="_blank" class="ml-md-auto">GitHub</a>
+    <div class="top-row">
+        <ul class="nav nav-pills">
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <OpenIconic IconId="home" /> Home
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="counter">
+                    <OpenIconic IconId="plus" /> Counter
+                </NavLink>
+            </li>
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="fetchdata">
+                    <OpenIconic IconId="list-rich" /> Fetch data
+                </NavLink>
+            </li>
+        </ul>
+        <a href="https://github.com/olivierdagenais/FullBodyMix" target="_blank" class="ml-md-auto">
+            <OpenIconic IconId="fork" /> olivierdagenais/FullBodyMix
+        </a>
     </div>
 
     <div class="content px-4">
