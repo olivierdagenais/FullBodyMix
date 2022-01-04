@@ -27,10 +27,11 @@ namespace FullBodyMix.Models
 				return;
 			}
 			StartWorkout(callback);
-			for (int i = 0; i < Playlist.Count; i++)
+			// ci = current index, ni = next index
+			for (int ci = 0, ni = 1; ci < Playlist.Count; ci++, ni++)
 			{
-				var playlistEntry = Playlist[i];
-				var overallProgress = GetOverallProgress(i + 1);
+				var playlistEntry = Playlist[ci];
+				var overallProgress = GetOverallProgress(ci + 1);
 				Countdown(playlistEntry, overallProgress, callback);
 				StartEntry(playlistEntry, overallProgress, callback);
 				var parameters = playlistEntry.PerformanceParameters;
@@ -39,11 +40,11 @@ namespace FullBodyMix.Models
 					PerformTimedEntry(playlistEntry, overallProgress, callback);
 					StopTimedEntry(playlistEntry, overallProgress, callback);
 				}
-				if (i + 1 < Playlist.Count && parameters.RestTime != null)
+				if (ni < Playlist.Count && parameters.RestTime != null)
 				{
-					var nextEntry = Playlist[i + 1];
+					var nextEntry = Playlist[ni];
 					var restTime = parameters.RestTime.Value;
-					var nextProgress = GetOverallProgress(i + 2);
+					var nextProgress = GetOverallProgress(ni + 1);
 					StartPreparing(nextEntry, restTime, nextProgress, callback);
 				}
 			}
