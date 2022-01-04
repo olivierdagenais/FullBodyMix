@@ -170,7 +170,6 @@ namespace FullBodyMix.Models
 			string overallProgress,
 			Callback callback)
 		{
-			var pp = entry.PerformanceParameters;
 			var vp = new ViewParameters
 			{
 				CurrentEntry = entry,
