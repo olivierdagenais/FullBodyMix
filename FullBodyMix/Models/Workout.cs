@@ -136,7 +136,7 @@ namespace FullBodyMix.Models
 			StartPreparing(firstEntry, StartDelay, overallProgress, callback);
 		}
 
-		internal void StartPreparing(
+		internal static void StartPreparing(
 			PlaylistEntry entry,
 			TimeSpan preparationTime,
 			string overallProgress,
