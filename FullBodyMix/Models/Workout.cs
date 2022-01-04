@@ -31,7 +31,7 @@ namespace FullBodyMix.Models
 			for (int ci = 0, ni = 1; ci < Playlist.Count; ci++, ni++)
 			{
 				var playlistEntry = Playlist[ci];
-				var overallProgress = GetOverallProgress(ci + 1);
+				var overallProgress = GetOverallProgress(ci);
 				Countdown(playlistEntry, overallProgress, callback);
 				StartEntry(playlistEntry, overallProgress, callback);
 				var parameters = playlistEntry.PerformanceParameters;
@@ -44,15 +44,15 @@ namespace FullBodyMix.Models
 				{
 					var nextEntry = Playlist[ni];
 					var restTime = parameters.RestTime.Value;
-					var nextProgress = GetOverallProgress(ni + 1);
+					var nextProgress = GetOverallProgress(ni);
 					StartPreparing(nextEntry, restTime, nextProgress, callback);
 				}
 			}
 		}
 
-		internal string GetOverallProgress(int step)
+		internal string GetOverallProgress(int zeroBasedStep)
 		{
-			var result = $"{step} of {Playlist.Count}";
+			var result = $"{zeroBasedStep + 1} of {Playlist.Count}";
 			return result;
 		}
 
@@ -132,7 +132,7 @@ namespace FullBodyMix.Models
 				return;
 			}
 			var firstEntry = Playlist[0];
-			var overallProgress = GetOverallProgress(1);
+			var overallProgress = GetOverallProgress(0);
 			StartPreparing(firstEntry, StartDelay, overallProgress, callback);
 		}
 
