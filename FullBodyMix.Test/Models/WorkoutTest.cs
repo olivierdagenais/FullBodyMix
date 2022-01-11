@@ -76,7 +76,7 @@ namespace FullBodyMix.Models
 		};
 
 		private static void TestCallbackNotCalled(
-			Action<Func<ViewParameters, Result>> mut
+			Action<Callback> mut
 		)
 		{
 			var executed = false;
@@ -122,7 +122,8 @@ namespace FullBodyMix.Models
 			}.ToImmutableList();
 
 			var actual = new List<ViewParameters>();
-			Workout.Countdown(BurpeesFiveFive, "1 of 1", vp => {
+			Workout.Countdown(BurpeesFiveFive, "1 of 1", vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});
@@ -232,7 +233,8 @@ namespace FullBodyMix.Models
 				},
 			};
 
-			SmallestPossibleWorkout.Perform(vp => {
+			SmallestPossibleWorkout.Perform(vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});
@@ -398,7 +400,8 @@ namespace FullBodyMix.Models
 				},
 			};
 
-			TwoEntryWorkout.Perform(vp => {
+			TwoEntryWorkout.Perform(vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});
@@ -445,7 +448,8 @@ namespace FullBodyMix.Models
 			}.ToImmutableList();
 
 			var actual = new List<ViewParameters>();
-			Workout.PerformTimedEntry(BurpeesFiveFive, "1 of 1", vp => {
+			Workout.PerformTimedEntry(BurpeesFiveFive, "1 of 1", vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});
@@ -486,7 +490,8 @@ namespace FullBodyMix.Models
 			}.ToImmutableList();
 
 			var actual = new List<ViewParameters>();
-			Workout.StartEntry(BurpeesFiveFive, "1 of 1", vp => {
+			Workout.StartEntry(BurpeesFiveFive, "1 of 1", vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});
@@ -536,7 +541,8 @@ namespace FullBodyMix.Models
 			}.ToImmutableList();
 
 			var actual = new List<ViewParameters>();
-			SmallestPossibleWorkout.StartWorkout(vp => {
+			SmallestPossibleWorkout.StartWorkout(vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});
@@ -560,7 +566,8 @@ namespace FullBodyMix.Models
 			}.ToImmutableList();
 
 			var actual = new List<ViewParameters>();
-			Workout.StopTimedEntry(BurpeesFiveFive, "1 of 1", vp => {
+			Workout.StopTimedEntry(BurpeesFiveFive, "1 of 1", vp =>
+			{
 				actual.Add(vp);
 				return Result.Continue;
 			});

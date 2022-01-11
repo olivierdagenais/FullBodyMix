@@ -2,8 +2,6 @@
 using System.Collections.Immutable;
 using System.Text.Json.Serialization;
 
-using Callback = System.Func<FullBodyMix.Models.ViewParameters, FullBodyMix.Models.Result>;
-
 namespace FullBodyMix.Models
 {
 	public record Workout
