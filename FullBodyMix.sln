@@ -1,15 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FullBodyMix", "FullBodyMix\FullBodyMix.csproj", "{E8EE609E-C33A-4DF0-A3D8-4EC9FB10294C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullBodyMix", "FullBodyMix\FullBodyMix.csproj", "{E8EE609E-C33A-4DF0-A3D8-4EC9FB10294C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullBodyMix.Test", "FullBodyMix.Test\FullBodyMix.Test.csproj", "{2C94213F-3A63-49F8-8EE3-BA93C88C064B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0239E634-6FAA-465F-A45F-519E48C95377}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{0C6ADF74-49D6-4010-B926-D5D79ABF5CA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{99FAC96A-285E-4975-8721-E981E2FE19E0}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\gh-pages.yml = .github\workflows\gh-pages.yml
 	EndProjectSection
 EndProject
 Global
@@ -32,5 +42,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D712CA2B-08E8-4980-9AA4-1DA61E2B7578}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0C6ADF74-49D6-4010-B926-D5D79ABF5CA1} = {0239E634-6FAA-465F-A45F-519E48C95377}
+		{99FAC96A-285E-4975-8721-E981E2FE19E0} = {0C6ADF74-49D6-4010-B926-D5D79ABF5CA1}
 	EndGlobalSection
 EndGlobal
